@@ -1,13 +1,31 @@
 <?php
 
-class BookController
+
+class BookController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return string
-     */
-    public function indexAction(Request $request)
+    public function indexAction($request)
     {
-        return '<b>This is index action of book controller</b>';
+        $books = array(
+            'books' => array(
+                'book1' => array(
+                    'title' => 'Potter',
+                    'author' => 'Royling',
+                    'price' => 443
+                ),
+                'book2' => array(
+                    'title' => 'Shining',
+                    'author' => 'King',
+                    'price' => 556
+                ),
+                'book3' => array(
+                    'title' => 'Alchemist',
+                    'author' => 'Koelio',
+                    'price' => 696
+                )
+            )
+        );
+
+        return $this->render('index', $books);
     }
 }
+
