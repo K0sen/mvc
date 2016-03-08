@@ -2,27 +2,20 @@
 
 class IndexController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return string
-     */
     public function indexAction(Request $request)
     {
         $args = array(
             'var1' => 256,
-            'var2' => 'hello'
+            'var2' => 'Hello'
         );
-        
+
         return $this->render('index', $args);
+
+        //return '<b>This is index action of index controller</b>';
     }
 
-    /**
-     * @param Request $request
-     * @return string
-     */
     public function contactAction(Request $request)
     {
-        return '<b>This is contact action of index controller</b>';
+        return $this->render('contact');
     }
-
 }
