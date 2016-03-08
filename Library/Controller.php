@@ -13,7 +13,7 @@ abstract class Controller
         }
 
         ob_start();
-        require VIEW_DIR . $tplDir . DS . $viewName . '.phtml';
+        require $file;
         return ob_get_clean();
     }
 }
