@@ -1,1 +1,18 @@
 <b>This is index action of book controller</b>
+<table border="2" cellpadding="10">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+    </tr>
+
+<?php foreach ($books as $book) : ?>
+    <tr>
+        <td><?=$book['title']?></td>
+        <td><?=$book['author']?></td>
+        <td><?=$book['price']?></td>
+    </tr>
+<?php endforeach; ?>
+</table>
+
+<?php //echo '<pre>'; var_dump($books, $books['book1']); echo '</pre>';?>
