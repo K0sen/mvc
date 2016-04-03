@@ -1,0 +1,26 @@
+<b><?=Session::getFlash()?></b>
+<form action="" method="post">
+    Title: <input type="text" name="title" value="<?=$form->title?>"> <br>
+    Price: <input type="text" name="price" value="<?=$form->price?>"> <br>
+    Description:
+    <textarea name="description"><?=$form->description?></textarea> <br>
+    Style:
+    <select name="style_id">
+        <option selected value="<?=$form->style_id?>"><?=$form->style_id?></option>
+        <option value="<?=$form->style_id = 1?>">et</option>
+        <option value="<?=$form->style_id = 2?>">odio</option>
+        <option value="<?=$form->style_id = 3?>">id</option>
+        <option value="<?=$form->style_id = 4?>">proin</option>
+        <option value="<?=$form->style_id = 5?>">orci</option>
+        <option value="<?=$form->style_id = 6?>">amet</option>
+        <option value="<?=$form->style_id = 7?>">lectus</option>
+        <option value="<?=$form->style_id = 8?>">ante</option>
+        <option value="<?=$form->style_id = 9?>">nec</option>
+        <option value="<?=$form->style_id = 10?>">eu</option>
+        <option value="<?=$form->style_id = 11?>">Other</option>
+        <option value="<?=$form->style_id = 12?>">unique</option>
+    </select> <br>
+    Active: <input type="checkbox" name="status" <?=$form->status ? 'checked' : '' ?>> <br>
+    <button>Go</button>
+</form>
+

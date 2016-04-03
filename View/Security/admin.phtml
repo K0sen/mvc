@@ -1,0 +1,7 @@
+<h1>Hello, <?php
+    $name = Session::get('user');
+    $name = explode('@', $name);
+    echo $name[0];
+    ?></h1>
+
+<b><?=Session::getFlash()?></b>

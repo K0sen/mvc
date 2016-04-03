@@ -1,0 +1,33 @@
+<b><?= Session::getFlash(); ?></b>
+<h1>Books table</h1>
+
+<table border="1" cellspacing="0" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Style</th>
+        <th>Price</th>
+        <th>Active</th>
+        <th>Actions</th>
+    </tr>
+
+    <?php foreach ($books as $book) : ?>
+        <tr>
+            <td><?=$book['id']?></td>
+            <td><?=$book['title']?></td>
+            <td><?=$book['author']?></td>
+            <td><?=$book['style']?></td>
+            <td><?=$book['price']?></td>
+            <td><?=$book['status']?></td>
+            <td>
+                <a href="/admin/book/edit/<?=$book['id']?>">Edit</a>
+                <a href="/admin/book/delete/<?=$book['id']?>">Remove</a>
+                <a href="/admin/book/picture/<?=$book['id']?>">Add Picture</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+
+</table>
+
+

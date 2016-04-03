@@ -1,0 +1,26 @@
+<h1>Book: <?=$book['title']?></h1>
+<?php if (file_exists("C:/xampp/htdocs/mvc/webroot/uploads/{$book['id']}.jpg")) : ?>
+    <img src="webroot/uploads/<?=$book['id']?>.jpg" width="300px" height="500px"> <br>
+<?php else : ?>
+    <img src="webroot/uploads/default_big.jpg"> <br>
+<?php endif; ?>
+Title:  <?=$book['title']?><br>
+Price:  <?=$book['price']?><br>
+Author: <?=$book['author']?><br>
+Style: <?=$book['style']?><br>
+
+<?php if ($book['status'] == 1) : ?>
+<a href="/add/<?=$book['id']?>">Add to cart</a><br>
+<i><?= Session::getFlash(); ?></i>
+<?php else : ?>
+<b>Book is out of sale</b>
+<?php endif; ?>
+<!--<a href="#">Add to cart</a>-->
+
+<?php
+
+echo '<pre>';
+echo print_r($book);
+echo '</pre>';
+?>
+
