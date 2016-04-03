@@ -1,18 +1,54 @@
-<b>This is index action of book controller</b>
-<table border="2" cellpadding="10">
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Price</th>
-    </tr>
+<b>This is index action of book controller</b><br>
+<h1>Books</h1>
+
 
 <?php foreach ($books as $book) : ?>
-    <tr>
-        <td><?=$book['title']?></td>
-        <td><?=$book['author']?></td>
-        <td><?=$book['price']?></td>
-    </tr>
+    <?php if (file_exists("C:/xampp/htdocs/mvc/webroot/uploads/{$book['id']}.jpg")) : ?>
+    <img src="webroot/uploads/<?=$book['id']?>.jpg" width="100px" height="150px"> <br>
+    <?php else : ?>
+    <img src="webroot/uploads/default_small.jpg"> <br>
+    <?php endif; ?>
+    Title:  <?=$book['title']?><br>
+    Price:  <?=$book['price']?><br>
+    Author:  <?=$book['author']?><br>
+    Status:   <?php
+                if ($book['status'] == 1){
+                    echo 'available';
+                } else {
+                    echo 'not available';
+                }
+                ?><br>
+    ID:  <?=$book['id']?><br>
+    Style: <?=$book['style']?><br>
+    Style_id: <?=$book['style_id']?><br>
+
+    <a href="/book-<?=$book['id']?>.html">Details</a>
+<!--    <a href="/index.php?route=book/show&amp;id=--><?//=$book['id']?><!--">Details</a>-->
+    <hr>
 <?php endforeach; ?>
-</table>
+
+<!--Author:  --><?//=$book['author']?><!--<br>-->
+
+
 
 <?php //echo '<pre>'; var_dump($books, $books['book1']); echo '</pre>';?>
+
+<!--<table border="2" cellpadding="10">-->
+<!--    <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Author</th>-->
+<!--        <th>Price</th>-->
+<!--    </tr>-->
+<!---->
+<!--    --><?php //foreach ($books as $book) : ?>
+<!--        <tr>-->
+<!--            <td>--><?//=$book['title']?><!--<br><a href="#">details</a></td>-->
+<!--            <td>--><?//=$book['author']?><!--<br><a href="#">details</a></td>-->
+<!--            <td>--><?//=$book['price']?><!--</td>-->
+<!--            <a href="#">details</a>-->
+<!--        </tr>-->
+<!--    --><?php //endforeach; ?>
+<!--</table>-->
+<php
+echo 'fuck you all';
+?>

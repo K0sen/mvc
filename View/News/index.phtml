@@ -1,0 +1,44 @@
+<b><?= Session::getFlash(); ?></b>
+<h2>News:</h2>
+
+
+
+<?php foreach($news as $news) : ?>
+    <center><b>Title: <?= $news['title']?></b></center>
+    <center><u><?= $news['text']?></u></center>
+    <center><a href="/news-<?= $news['id']?>.html">details</a></center>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<?php endforeach; ?>
+<?= print_r($news); ?><br>
+
+<a name="g"><b>here</b></a>
+
+<?php
+
+
+Class Test
+{
+    public $e = 255;
+    private $C = 43;
+
+    public function test()
+    {
+        $this->C = 44;
+        return $this;
+    }
+}
+
+$e = (new Test())->test();
+$testconstant = 666999;
+echo '<pre>'; print_r($e); echo '<pre>';
+print_r($news);
+
+?>
+
+
+
+

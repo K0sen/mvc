@@ -1,0 +1,13 @@
+<h1>Authors</h1>
+
+<?php foreach($authors as $author) : ?>
+    Author: <?= $author['author']?><br>
+    Book:   <?= $author['book'] ?><br>
+    ID:     <?= $author['id'] ?><br>
+    <a href="/author-<?= $author['id']?>.html">Details</a>
+    <hr>
+
+
+<?php endforeach; ?>
+
+

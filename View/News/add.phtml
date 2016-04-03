@@ -1,0 +1,25 @@
+<h3>Insert news</h3><br>
+
+<b><?= Session::getFlash(); ?></b>
+<form method="post">
+    <table>
+        <tr>
+            <td>Title:</td>
+            <td><input type="name" name="title"></td>
+        </tr>
+        <tr>
+            <td>Text:</td>
+            <td><textarea name="text"></textarea></td>
+        </tr>
+        <tr>
+            <td><button>Post</button></td>
+        </tr>
+    </table>
+</form>
+
+
+<?php
+echo print_r($_POST);
+
+
+

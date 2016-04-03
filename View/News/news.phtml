@@ -1,0 +1,10 @@
+<h1><?= $news['title'];?></h1>
+<div>
+    <p style="flood-color: red"><?= $news['text']; ?></p>
+    <br>
+    <?php if (Session::has('user')) : ?>
+    <a href="/news_delete/<?= $news['id']; ?>">delete</a>
+    <?php endif; ?>
+    <hr>
+
+</div>

@@ -1,0 +1,283 @@
+<?php
+
+/**Checking for symmetry of str
+ * @param $str
+ * @return string
+ */
+function SSymmetry($str)
+{
+    $lenght = strlen($str);
+    echo "Checking for symmetry: {$str} ====> ";
+    for ($i = 0; $i < ($lenght / 2); $i++) {
+        if (($str[$i] != $str[$lenght - 1 - $i])) {
+            return 'not symmetric';
+        }
+    }
+    return 'symmetry';
+}
+
+echo SSymmetry('ATMTA');
+echo '<br>';
+
+/** 14. Shortest and longest word
+ * @param $arr
+ * @return array
+ */
+function task14($arr)
+{
+    $arr = explode(' ', $arr);
+    //$res = array();
+    $res['min'] = $arr[0];
+    foreach ($arr as $value) {
+        $res['min'] = (strlen($value) < strlen($res['min'])) ? $value : $res['min'];
+    }
+    $res['max'] = $arr[0];
+    foreach ($arr as $value) {
+        $res['max'] = (strlen($value) > strlen($res['max'])) ? $value : $res['max'];
+    }
+    return $res;
+}
+print_r (task14('Shla Sasha po shosse i posasuvala syshky'));
+echo '<br>';
+
+
+/**1. Yravnenie (не понятно условие) ¯\_(ツ)_/¯
+ * @param $x
+ * @param $y
+ */
+function task1($x, $y)
+{
+    $min = 'none'; $max = 'none';
+    if ($x > $y){
+        $x > $y + 5 ? $max = $x : $max = $y;
+    }
+    if ($x < $y){
+        $x + 1 < $y - 3 ? $min = $x : $min = $y;
+    }
+    return "max - {$max}, min = {$min}";
+}
+
+echo task1(5, 10);
+echo '   ==>task1';
+echo '<br>';
+
+/**2. Power of numb (cycle)
+ * @param $a
+ * @param $b
+ * @return mixed
+ */
+function task2($a, $b)
+{
+    echo "{$a}<sup>{$b}</sup> = ";
+    $d = $a;
+    for (; $b>1; $b--) {
+        $a = $a * $d;
+    }
+    return $a;
+}
+
+echo task2(3, 4);
+echo '   ==>task2';
+echo '<br>';
+
+
+/**3. Equation (y = x^n+x^(n-1)+...+x^2+x+1)  hz kak bez funkcii pow()
+ * @param $a
+ * @param $b
+ * @return int|number
+ */
+function task3($a, $b)
+{
+    $num = 0;
+    for (; $b > 0; $b--){
+        $num += pow($a, $b);
+    }
+    return $num + 1;
+}
+
+echo task3(3, 4);
+echo '   ==>task3';
+echo '<br>';
+
+
+function task3i1($x , $n)
+{
+    $g = $x + 1;
+    for ($i=1; $i < $n; $i++){
+        $g = $g * $x + 1;
+    }
+    if ($n < 1){
+        return 1;
+    }
+    return $g;
+}
+// (x + 1)*x  -> (x^2 +x)*x + 1 ->
+echo task3i1(12, 6);
+echo '   ==>task3(2 version)';
+echo '<br>';
+
+function calcY($x, $n)
+{
+    if (!$n) {
+        return 1;
+    }
+    return ($n > 0) ? calcY($x, $n - 1) + pow($x, $n) : calcY($x, $n + 1) +  pow($x, $n);
+}
+
+
+
+/**4. Equation √(√2+ (√2 + (√2 +... (√2)
+ * BORODA
+ * @param $x
+ * @return float
+ */
+function task4($x)
+{
+    $t = 2;
+    for ($i = 0; $i < $x; $i++){
+        $t = sqrt($t) + 2;
+    }
+    return sqrt($t);
+}
+
+echo task4(3);
+echo '   ==>task4';
+echo '<br>';
+
+
+
+/**5. Для произвольного целого числа m > 1 найти наибольшее целое k , при котором 4^k < m.
+ * @param $m
+ * @param int $k
+ * @return int
+ */
+function task5($m, $k = 1)
+{
+    if ($m <= 1){
+        echo 'input number > 1';
+    } else {
+        while (pow(4, $k) < $m){
+            $k++;
+        }
+    }
+    return $k;
+}
+
+echo task5(100);
+echo '   ==>task5';
+echo '<br>';
+
+/**6. Count negative numbs in string
+ * @param $arr
+ * @return int
+ */
+function task6($arr)
+{
+    $s = explode(',', $arr);
+    $t = 0;
+    foreach ($s as $value) {
+        if($value < 0){
+            $t++;
+        }
+    }
+    return $t;
+}
+
+$arr = '3, 4, 7, -3, -6';
+echo task6($arr);
+echo '   ==>task6';
+echo '<br>';
+
+
+/**7. Дано натуральное число n . Составить алгоритм нахождения всех таких натуральных q , что n делится на q2 и не делится на q3 .
+ * @param $n
+ * @return string
+ */
+function task7($n)
+{
+    $arr = [];
+    for ($q = 1; $q < $n; $q++){
+        if (is_int($n / ($q*$q)) && !is_int($n / ($q*$q*$q))){
+                $arr[] = $q;
+        }
+    }
+    return implode(', ', $arr);
+}
+
+echo task7(16);
+echo '   ==>task7';
+echo '<br>';
+
+
+
+function task8($arrN, $arrM)
+{
+    $arr = [];
+    foreach ($arrN as $item) {
+        if (in_array($item, $arrM)) {
+            $arr[] = $item;
+        }
+    }
+    return implode(', ', $arr);
+}
+
+$arrN = [1, 3, 5, 8, 9];
+$arrM = [2, 4, 6, 8, 43, 56, 3];
+print_r(task8($arrN, $arrM));
+echo '   ==>task8';
+echo '<hr>';
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWork</title>
+</head>
+<body>
+    <form method="post">
+        <table border="2">
+        <tr>
+            <th colspan="2">Task 2(power of numb)<tr>
+        </tr>
+        <tr>
+            <td>Degree1: <input type="text" name="task2numb" value=" "></td>
+            <td rowspan="3"><?= task2(requestPost('task2numb'), requestPost('task2power'))?></td>
+        </tr>
+        <tr>
+            <td>Degree2: <input type="text" name="task2power"</td>
+        </tr>
+        <tr>
+            <td><button>Go</button></td>
+        </tr>
+        </table>
+        <hr>
+        <table border="2">
+        <tr>
+            <th colspan="2">Task 6(count negative numb)<tr>
+        </tr>
+        <tr>
+            <td>Input numbers whis ", ": <input type="text" name="task6"</td>
+            <td rowspan="2" width="100" style="text-align: center"><?= task6(requestPost('task6'))?></td>
+        </tr>
+        <tr>
+            <td><button>Go</button></td>
+        </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+<?php
+function requestPost($key)
+{
+    if (isset($_POST[$key])) {
+        return $_POST[$key];
+    }
+    return null;
+}
+
+echo '<pre>';
+var_dump($_POST, $args);
+
+echo '</pre>';
